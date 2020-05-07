@@ -1,12 +1,12 @@
 class FriendshipsController < ApplicationController
-  before_action :find_friendship, only: [:destroy, :edit]
+  before_action :find_friendship, only: %i[destroy edit]
 
   def new
     @friendship = Friendship.new
   end
 
   def create
-    @friendship = current_user.friendships.build({friend_id: params[:friend_id], confirmed: false})
+    @friendship = current_user.friendships.build(friend_id: params[:friend_id], confirmed: false)
     if @friendship.save
       flash[:success] = 'Friendship request sent successfully'
       redirect_to users_path

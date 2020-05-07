@@ -11,13 +11,13 @@ module UsersHelper
 
   # Users who have yet to confirm friendship
   def users_pending_to_accept_my_request(user)
-    friendship1 = @friendships.map { |friendship| friendship.friend if !friendship.confirmed }.compact
+    friendship1 = @friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
     friendship1.include?(user)
   end
 
   def pending_for_me_to_accept(user)
-    friendship_2 = @inverse_friendships.map { |friendship| friendship.user if !friendship.confirmed }.compact
-    friendship_2.include?(user)
+    friendship2 = @inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+    friendship2.include?(user)
   end
 
   def friends_already(user)
@@ -32,8 +32,8 @@ module UsersHelper
       Friendship.find_by(user_id: user.id, friend_id: current_user.id)
   end
 
-  def list_pending_friends(user)
-    friendship_2 = @inverse_friendships.map { |friendship| friendship.user if !friendship.confirmed }.compact
-    friendship_2
+  def list_pending_friends(_user)
+    friendship2 = @inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+    friendship2
   end
 end
