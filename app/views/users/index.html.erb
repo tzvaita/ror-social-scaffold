@@ -1,15 +1,34 @@
+<% if flash[:success] %>
+    <div class="notice"><%= flash[:success] %></div>
+  <% end %>
 <section class="users-section">
-  <ul class="users-list">
+  <ul class="text-center">
     <% @users.each do |user| %>
-      <li>
-        Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
-        <span class="profile-link">
-          <%= link_to 'Invite to friendship',  user_path(user), class: 'profile-link' %>
-        </span>
-      </li>
+      <li class= "users-list">
+        <div>
+          <p> <%=gravatar_for(user) %></p>
+          <p><%= link_to user.name, user %></p>
+          <% if me?(user) %>
+            <%= button_to 'Go to My Profile ', user, method: :get %>  
+          <% elsif users_pending_to_accept_my_request(user) %>
+            <%= button_to 'Cancel Request Sent', friendship_path(finding_friendship_id(user)), method: :delete %> 
+          <% elsif pending_for_me_to_accept(user) %>
+            <div>
+              <%= button_to 'Accept Request',edit_friendship_path(finding_friendship_id(user)), method: :get %> 
+              <%= button_to 'Cancel Request',friendship_path(finding_friendship_id(user)), method: :delete %> 
+            </div>
+          <% elsif friends_already(user)  %>
+            <span>
+              <%= button_to 'Go to friend\'s Profile ', user, method: :get %>
+            </span>
+            <span>
+              <%= button_to 'Remove',friendship_path(finding_friendship_id(user)), method: :delete %>
+            </span>
+          <% else %>
+            <%= button_to  "Invite to friendship", friendships_path({:friend_id => user.id}), method: :post %> 
+          <% end %>
+        </div>
+      </li>  
     <% end %>
   </ul>
 </section>

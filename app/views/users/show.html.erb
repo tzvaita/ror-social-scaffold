@@ -1,8 +1,13 @@
+<% if flash[:success] %>
+    <div class="notice"><%= flash[:success] %></div>
+  <% end %>
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% if !friends_already(@user) %>
   <span class="profile-link">
-          <%= link_to 'Invite to friendship', class: 'profile-link' %>
-        </span>
+    <%= button_to  'Invite to friendship', friendships_path({:friend_id => @user.id}), method: :post %> 
+  </span>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
