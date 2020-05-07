@@ -27,7 +27,7 @@ module UsersHelper
     friends_list.include?(user)
   end
 
-  def finding_friendship_id(user)
+  def find_friendship_id(user)
     Friendship.find_by(user_id: current_user.id, friend_id: user.id) ||
       Friendship.find_by(user_id: user.id, friend_id: current_user.id)
   end
