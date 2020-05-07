@@ -54,3 +54,6 @@ Layout/MultilineMethodCallIndentation:
 
 Style: 
   Enabled: false
+
+Lint:
+  Enabled: false
