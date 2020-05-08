@@ -1,5 +1,12 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% if friends_already(@user) %>
+    <%= button_to 'Remove',friendship_path(finding_friendship_id(@user)), method: :delete %>
+  <% else %>
+  <span class="profile-link">
+    <%= button_to  'Invite to friendship', friendships_path({:friend_id => @user.id}), method: :post %> 
+  </span>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
