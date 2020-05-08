@@ -19,6 +19,7 @@ class FriendshipsController < ApplicationController
   def edit
     if @friendship_id
       @friendship_id.update_attribute(:confirmed, true)
+      current_user.friendships.create(friend_id: @friendship_id.user_id, confirmed: true)
       flash[:success] = 'Friendship request accepted'
       redirect_to users_path
     else
