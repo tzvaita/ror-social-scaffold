@@ -1,6 +1,6 @@
-# Scaffold for social media app with Ruby on Rails
+# Social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+This is the repository for the last ruby on rails project for microverse curriculum. The project is divided into milestones with specific requirements to be met in each one of them. The application was published on Heroku: [link](https://still-taiga-44791.herokuapp.com)
 
 ## Built With
 
@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-TBA
+https://still-taiga-44791.herokuapp.com
 
 
 ## Getting Started
@@ -62,8 +62,7 @@ Open `http://localhost:3000/` in your browser.
 TBA
 
 ## Authors
-
-TBA
++ Tennyson Zvaita - [@tennyzvaita](https://twitter.com/tennyzvaita) - tzvaita@gmail.com
 
 ## 🤝 Contributing
 
@@ -77,7 +76,11 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Microverse.org
+- Stackoverflow
+- The Odin Project
+- Heroku
+- Rails docs
 
 ## 📝 License
 
