@@ -8,10 +8,10 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(friend_id: params[:friend_id], confirmed: false)
     if @friendship.save
-      flash[:success] = 'Friendship request sent successfully'
+      flash[:notice] = 'Friendship request sent successfully'
       redirect_to users_path
     else
-      flash[:danger] = 'Friendship request send failed'
+      flash[:notice] = 'Friendship request send failed'
       redirect_to users_path
     end
   end
@@ -20,10 +20,10 @@ class FriendshipsController < ApplicationController
     if @friendship_id
       @friendship_id.update_attribute(:confirmed, true)
       current_user.friendships.create(friend_id: @friendship_id.user_id, confirmed: true)
-      flash[:success] = 'Friendship request accepted'
+      flash[:notice] = 'Friendship request accepted'
       redirect_to users_path
     else
-      flash[:danger] = 'Friendship request not accepted'
+      flash[:notice] = 'Friendship request not accepted'
       redirect_to users_path
     end
   end
@@ -31,10 +31,10 @@ class FriendshipsController < ApplicationController
   def destroy
     if @friendship_id
       @friendship_id.destroy
-      flash[:success] = 'Friendship request canceled'
+      flash[:notice] = 'Friendship request canceled'
       redirect_to users_path
     else
-      flash[:danger] = 'Friendship request NOT cancelled'
+      flash[:notice] = 'Friendship request NOT cancelled'
     end
   end
 
