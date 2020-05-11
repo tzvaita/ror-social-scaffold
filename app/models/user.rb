@@ -31,5 +31,4 @@ class User < ApplicationRecord
   def friends_and_own_posts
     Post.where(user: (friends + inverse_friends))
   end
-
 end
