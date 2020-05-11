@@ -3,7 +3,8 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    timeline_posts
+    @posts = current_user.friends_and_own_posts
+    #timeline_posts
   end
 
   def create

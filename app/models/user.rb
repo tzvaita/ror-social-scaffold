@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   def friends
     result = []
-    friendships.where(friendship_status: true).each do |x|
+    friendships.where(confirmed: true).each do |x|
       result << x.friend
     end
     result
