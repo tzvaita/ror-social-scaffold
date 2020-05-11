@@ -2,6 +2,8 @@
   <h2><%= "Name: #{@user.name}" %></h2>
   <% if friends_already(@user) %>
     <%= button_to 'Remove',friendship_path(find_friendship_id(@user)), method: :delete %>
+  <% elsif me?(@user) %>
+    This is your profile page
   <% else %>
   <span class="profile-link">
     <%= button_to  'Invite to friendship', friendships_path({:friend_id => @user.id}), method: :post %> 
