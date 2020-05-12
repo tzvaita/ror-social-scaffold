@@ -30,7 +30,7 @@ class FriendshipsController < ApplicationController
 
   def destroy
     if @friendship_id
-      @mutual.destroy
+      @mutual.destroy if @mutual
       @friendship_id.destroy
       flash[:notice] = 'Friendship request canceled'
       redirect_to users_path
