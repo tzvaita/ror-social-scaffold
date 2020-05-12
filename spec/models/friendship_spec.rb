@@ -7,7 +7,6 @@ RSpec.describe Friendship, type: :model do
     @user3 = User.create!(name: 'T', email: 'te@gmail.com', password: '123457', password_confirmation: '123457')
     @friend = Friendship.create!(user_id: @user1.id, friend_id: @user2.id, confirmed: false)
     @friend1 = Friendship.create(user_id: @user3.id, friend_id: @user3.id, confirmed: false)
-
   end
 
   context 'with valid details' do
