@@ -4,7 +4,12 @@
     <%= button_to 'Remove',friendship_path(find_friendship_id(@user)), method: :delete %>
   <% elsif me?(@user) %>
     This is your profile page
-  <% else %>
+<% elsif users_pending_to_accept_my_request(@user) %>
+  <%= button_to 'Cancel Request Sent', friendship_path(find_friendship_id(@user)), method: :delete %> 
+<% elsif pending_for_me_to_accept(@user) %>
+  <div>
+    <%= button_to 'Accept Request',edit_friendship_path(find_friendship_id(@user)), method: :get %> 
+    <%= button_to 'Cancel Request',friendship_path(find_friendship_id(@user)), method: :delete %>   <% else %>
   <span class="profile-link">
     <%= button_to  'Invite to friendship', friendships_path({:friend_id => @user.id}), method: :post %> 
   </span>
